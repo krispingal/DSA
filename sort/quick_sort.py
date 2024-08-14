@@ -1,27 +1,34 @@
-from random import sample
+from random import sample, randint
 from timeit import timeit
 from enum import Enum
 
 
-class PartitionAlgorithm(Enum):
+class QuicksortAlgorithm(Enum):
     LOMUTO = 1
     HOARE = 2
+    RANDOMIZED = 3
 
 
-class QuickSort:
+class Quicksort:
     def __init__(
             self,
-            partition_algo: PartitionAlgorithm = PartitionAlgorithm.LOMUTO
+            algo: QuicksortAlgorithm = QuicksortAlgorithm.LOMUTO
             ) -> None:
-        self.partition_algo = partition_algo
+        self.algo = algo
 
     def quicksort(self, A: list[int], lo: int, hi: int) -> None:
         if lo < hi:
-            if self.partition_algo == PartitionAlgorithm.LOMUTO:
+            if self.algo == QuicksortAlgorithm.LOMUTO:
                 p = self.lomuto_partition(A, lo, hi)
                 self.quicksort(A, lo, p - 1)
                 self.quicksort(A, p + 1, hi)
-            elif self.partition_algo == PartitionAlgorithm.HOARE:
+            elif self.algo == QuicksortAlgorithm.HOARE:
+                p = self.hoare_partition(A, lo, hi)
+                self.quicksort(A, lo, p)
+                self.quicksort(A, p + 1, hi)
+            elif self.algo == QuicksortAlgorithm.RANDOMIZED:
+                pi = randint(lo, hi - 1)
+                A[lo], A[pi] = A[pi], A[lo]
                 p = self.hoare_partition(A, lo, hi)
                 self.quicksort(A, lo, p)
                 self.quicksort(A, p + 1, hi)
@@ -51,8 +58,7 @@ class QuickSort:
 
 
 if __name__ == '__main__':
-    partitionAlgorithm = PartitionAlgorithm.HOARE
-    quickSort = QuickSort(partitionAlgorithm)
+    quickSort = Quicksort(QuicksortAlgorithm.RANDOMIZED)
     T1 = [5, 4, 2, 3, 1]
     T2 = [5, 4, 2, 6, 3, 1]
     T3 = [2]
@@ -69,4 +75,4 @@ if __name__ == '__main__':
     unsorted = sample(range(-100, 100), SZ)
     NUM_RUNS = 1000
     timer = timeit("quickSort.quicksort(unsorted, 0, SZ-1)", globals=globals(), number=NUM_RUNS)
-    print(f'Quick sort {partitionAlgorithm} partition algo completion time for array size: {SZ} {timer/NUM_RUNS:.5f}s')
+    print(f'Quick sort {quickSort.algo} partition algo completion time for array size: {SZ} {timer/NUM_RUNS:.5f}s')
