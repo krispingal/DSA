@@ -1,29 +1,29 @@
-"""Stack implementation using linked list."""
-from linked_list import Node
+"""Stack implemented using Arrays/lists"""
+from typing import TypeVar, Generic
 
+T = TypeVar('T')
 
-class Stack:
-    def __init__(self):
-        self.head = None
+class Stack(Generic[T]):
+    def __init__(self) -> None:
+        self.items: list[T] = []
+    
+    def push(self, item: T) -> None:
+        self.items.append(item)
 
-    def top(self):
-        if not self.head: return
-        return self.head.val
+    def pop(self) -> T:
+        if self.is_empty(): raise IndexError
+        return self.items.pop()
 
-    def push(self, val: object) -> None:
-        new_node = Node(val, self.head)
-        self.head = new_node
-
-    def pop(self) -> object:
-        if not self.head: raise StopIteration
-        pop_val = self.head.val
-        self.head = self.head.next
-        return pop_val
+    def is_empty(self) -> bool:
+        return not self.items
+    
+    def peek(self) -> T:
+        return self.items[-1]
 
 if __name__ == '__main__':
     stack = Stack()
     lis = "All that glitters is not gold".split(" ")[::-1]
     for a in lis:
         stack.push(a)
-    while stack.top():
+    while not stack.is_empty():
         print(stack.pop())
