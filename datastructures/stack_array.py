@@ -1,33 +1,26 @@
-"""Stack implementation using linked list."""
+"""Stack implemented using Arrays/lists"""
 from typing import TypeVar, Generic
-from linked_list import Node
 from stack import Stack as StackABC
-
 T = TypeVar('T')
 
 
 class Stack(StackABC, Generic[T]):
     def __init__(self) -> None:
-        self.head = None
+        self.items: list[T] = []
 
-    def push(self, val: T) -> None:
-        new_node = Node(val, self.head)
-        self.head = new_node
+    def push(self, item: T) -> None:
+        self.items.append(item)
 
     def pop(self) -> T:
         if self.is_empty(): raise IndexError
-        pop_val = self.head.val
-        self.head = self.head.next
-        return pop_val
+        return self.items.pop()
 
     def is_empty(self) -> bool:
-        return not self.head
+        return not self.items
 
     def peek(self) -> T:
-        if not self.head: return
-        return self.head.val
+        return self.items[-1]
 
-   
 if __name__ == '__main__':
     stack = Stack()
     lis = "All that glitters is not gold".split(" ")[::-1]

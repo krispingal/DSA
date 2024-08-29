@@ -1,36 +1,27 @@
-"""Queue implemented using linked list."""
+"""Queue implemented using arrays/lists."""
 from typing import TypeVar, Generic
-from linked_list import Node
 from queue import Queue as QueueABC
-
-
 T = TypeVar('T')
 
 
 class Queue(QueueABC, Generic[T]):
     def __init__(self) -> None:
-        self.head = None
-        self.tail = None
+        self.items = []
 
-    def enqueue(self, val: T) -> None:
-        nnode = Node(val)
-        if not self.tail:
-            self.head = self.tail = nnode
-        else:
-            self.tail.next = nnode
-            self.tail = nnode
+    def enqueue(self, item: T) -> None:
+        self.items.append(item)
 
     def dequeue(self) -> T:
         if self.is_empty(): raise IndexError
-        val, self.head = self.head.val, self.head.next
-        return val
+        # The following is an O(n) operation
+        return self.items.pop(0)
 
     def is_empty(self) -> bool:
-        return not self.head
+        return not self.items
 
     def peek(self) -> T:
         if self.is_empty(): raise IndexError
-        return self.head.val
+        return self.items[0]
 
 
 if __name__ == '__main__':

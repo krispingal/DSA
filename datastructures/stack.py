@@ -1,29 +1,22 @@
-"""Stack implemented using Arrays/lists"""
+"""Stack Abstract class."""
+from abc import ABC, abstractmethod
 from typing import TypeVar, Generic
 
 T = TypeVar('T')
 
-class Stack(Generic[T]):
-    def __init__(self) -> None:
-        self.items: list[T] = []
-    
+class Stack(ABC, Generic[T]):
+    @abstractmethod
     def push(self, item: T) -> None:
-        self.items.append(item)
+        pass
 
+    @abstractmethod
     def pop(self) -> T:
-        if self.is_empty(): raise IndexError
-        return self.items.pop()
+        pass
 
+    @abstractmethod
     def is_empty(self) -> bool:
-        return not self.items
-    
-    def peek(self) -> T:
-        return self.items[-1]
+        pass
 
-if __name__ == '__main__':
-    stack = Stack()
-    lis = "All that glitters is not gold".split(" ")[::-1]
-    for a in lis:
-        stack.push(a)
-    while not stack.is_empty():
-        print(stack.pop())
+    @abstractmethod
+    def peek(self) -> T:
+        pass
