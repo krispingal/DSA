@@ -1,7 +1,7 @@
 """Queue implemented using linked list."""
 from typing import TypeVar, Generic
-from linked_list import Node
-from queue import Queue as QueueABC
+from src.dsa.datastructures.linked_list import Node
+from src.dsa.datastructures.queue_abc import QueueABC
 
 
 T = TypeVar('T')

@@ -1,7 +1,7 @@
 """Stack implementation using linked list."""
 from typing import TypeVar, Generic
-from linked_list import Node
-from stack import Stack as StackABC
+from src.dsa.datastructures.linked_list import Node
+from src.dsa.datastructures.stack_abc import Stack as StackABC
 
 T = TypeVar('T')
 

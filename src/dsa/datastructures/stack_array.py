@@ -1,12 +1,13 @@
 """Stack implemented using Arrays/lists"""
+from dataclasses import dataclass, field
 from typing import TypeVar, Generic
-from stack import Stack as StackABC
+from stack_abc import Stack as StackABC
 T = TypeVar('T')
 
 
+@dataclass
 class Stack(StackABC, Generic[T]):
-    def __init__(self) -> None:
-        self.items: list[T] = []
+    items: list[T] = field(default_factory=list)
 
     def push(self, item: T) -> None:
         self.items.append(item)
@@ -26,5 +27,4 @@ if __name__ == '__main__':
     lis = "All that glitters is not gold".split(" ")[::-1]
     for a in lis:
         stack.push(a)
-    while not stack.is_empty():
-        print(stack.pop())
+    print(stack)

@@ -1,22 +1,23 @@
+""""Abstract class for max priority queue."""
 from abc import ABC, abstractmethod
 from typing import TypeVar, Generic
 
 T = TypeVar('T')
 
-
-class Queue(ABC, Generic[T]):
+class MaxPriorityQueue(ABC, Generic[T]):
     @abstractmethod
-    def enqueue(self, v: T) -> None:
+    def get_max(self) -> T:
         pass
 
     @abstractmethod
-    def dequeue(self) -> T:
+    def extract_max(self) -> T:
         pass
 
     @abstractmethod
-    def is_empty(self) -> bool:
+    def insert(self, v: T) -> None:
         pass
 
     @abstractmethod
-    def peek(self) -> T:
+    def increase_key(self, k) -> None:
         pass
+

@@ -1,13 +1,13 @@
 """Queue implemented using arrays/lists."""
+from dataclasses import dataclass, field
 from typing import TypeVar, Generic
-from queue import Queue as QueueABC
+from src.dsa.datastructures.queue_abc import QueueABC
 T = TypeVar('T')
 
 
+@dataclass
 class Queue(QueueABC, Generic[T]):
-    def __init__(self) -> None:
-        self.items = []
-
+    items: list[T] = field(default_factory=list)
     def enqueue(self, item: T) -> None:
         self.items.append(item)
 
@@ -29,8 +29,4 @@ if __name__ == '__main__':
     lis = "All that glitters is not gold".split(" ")
     for a in lis:
         q.enqueue(a)
-    try:
-        while True:
-            print(q.dequeue())
-    except IndexError:
-        pass
+    print(q)
