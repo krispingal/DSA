@@ -18,7 +18,8 @@ to help me build a mental model on how these work under the hood.
 
 ## Algorithms
 1. Binary search
-2. Prime sieve - sieve of eratosthenes
+1. Kadane's algorithm to find maximum sub array sum
+1. Prime sieve - sieve of eratosthenes
 ### Sort
 1. Bubble sort
 2. Merge sort
