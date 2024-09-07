@@ -26,3 +26,11 @@ to help me build a mental model on how these work under the hood.
 2. Merge sort
 3. Quick sort (3 variants - Lomuto, Hoare, and Randomized)
 4. Insertion sort
+5. Heap sort
+
+Bubble sort completion time for array size: 10_000 1.19851s
+Insertion sort completion time for array size: 10_000 0.02462s
+Heap sort completion time for array size: 10_000 0.04350s
+Merge sort completion time for array size: 10_000 0.01272s
+Quick sort QuicksortAlgorithm.RANDOMIZED partition algo completion time for array size: 10_000 0.01039s
+Quicksort Lomuto and Hoare partition code fails due to Recursion error hitting, for this size of the array.
