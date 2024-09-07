@@ -20,7 +20,9 @@ to help me build a mental model on how these work under the hood.
 1. Binary search
 1. Kadane's algorithm to find maximum sub array sum
 1. Prime sieve - sieve of eratosthenes
+
 ### Sort
 1. Bubble sort
 2. Merge sort
 3. Quick sort (3 variants - Lomuto, Hoare, and Randomized)
+4. Insertion sort
