@@ -1,7 +1,32 @@
 [project]
 name = "dsa"
+description = "Data Structures and Algorithms"
 version = "0.0.1"
+readme = "README.md"
+license = {file = "LICENSE"}
 dependencies = []
+
+[build-system]
+requires = ["setuptools >= 74.0"]
+build-backend = "setuptools.build_meta"
+
 
 [tool.setuptools]
 package-dir = {"" = "src"}
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "pytest-cov",
+]
+
+[tool.pytest.ini_options]
+pythonpath = "src"
+minversion = "6.0"
+addopts = [
+    "--import-mode=importlib",
+]
+testpaths = [
+    "tests",
+    "integration",
+]
