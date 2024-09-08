@@ -20,6 +20,8 @@ to help me build a mental model on how these work under the hood.
 1. Binary search
 1. Kadane's algorithm to find maximum sub array sum
 1. Prime sieve - sieve of eratosthenes
+1. Dijkstra's algorithm - single source shortest path problem (Using priority queue)
+1. Floyd-Warshall - all pairs shortest path
 
 ### Sort
 1. Bubble sort
@@ -29,8 +31,13 @@ to help me build a mental model on how these work under the hood.
 5. Heap sort
 
 Bubble sort completion time for array size: 10_000 1.19851s
+
 Insertion sort completion time for array size: 10_000 0.02462s
+
 Heap sort completion time for array size: 10_000 0.04350s
+
 Merge sort completion time for array size: 10_000 0.01272s
+
 Quick sort QuicksortAlgorithm.RANDOMIZED partition algo completion time for array size: 10_000 0.01039s
+
 Quicksort Lomuto and Hoare partition code fails due to Recursion error hitting, for this size of the array.
