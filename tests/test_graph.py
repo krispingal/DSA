@@ -1,6 +1,6 @@
 import pytest
-from dsa.algorithms.dijkstras import Solution as Dijkstra
-from dsa.algorithms.floyd_warshall import Solution as FloydWarshall
+from src.dsa.algorithms.dijkstras import Solution as Dijkstra
+from src.dsa.algorithms.floyd_warshall import Solution as FloydWarshall
 
 
 @pytest.fixture
