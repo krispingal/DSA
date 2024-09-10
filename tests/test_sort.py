@@ -3,10 +3,11 @@ import pytest
 from src.dsa.algorithms.sort.bubble_sort import BubbleSort
 from src.dsa.algorithms.sort.insertion_sort import InsertionSort
 from src.dsa.algorithms.sort.heap_sort import HeapSort
+from src.dsa.algorithms.sort.selection_sort import SelectionSort
 
 class TestSortAlgorithms:
     @pytest.mark.parametrize("sort_class", [
-        BubbleSort, InsertionSort, HeapSort
+        BubbleSort, InsertionSort, HeapSort, SelectionSort
     ])
     def test_sorting_algorithms(self, sort_class):
         sorter = sort_class()
