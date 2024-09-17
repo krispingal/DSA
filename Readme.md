@@ -30,14 +30,21 @@ to help me build a mental model on how these work under the hood.
 4. Insertion sort
 5. Heap sort
 
-Bubble sort completion time for array size: 10_000 1.19851s
+## Rate limit algorithms
+1. Token bucket
+2. Fixed window
 
-Insertion sort completion time for array size: 10_000 0.02462s
 
-Heap sort completion time for array size: 10_000 0.04350s
 
-Merge sort completion time for array size: 10_000 0.01272s
+## Sort performance test results
+**Bubble sort** completion time for array size: 10_000 1.19851s
 
-Quick sort QuicksortAlgorithm.RANDOMIZED partition algo completion time for array size: 10_000 0.01039s
+**Insertion sort** completion time for array size: 10_000 0.02462s
+
+**Heap sort** completion time for array size: 10_000 0.04350s
+
+**Merge sort** completion time for array size: **10_000 0.01272s**
+
+**Quick sort** QuicksortAlgorithm.RANDOMIZED partition algo completion time for array size: 10_000 0.01039s
 
 Quicksort Lomuto and Hoare partition code fails due to Recursion error hitting, for this size of the array.

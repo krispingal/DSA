@@ -11,8 +11,8 @@ class TestSortAlgorithms:
     ])
     def test_sorting_algorithms(self, sort_class):
         sorter = sort_class()
-        assert sorter.run([3, 1, 2]) == [1, 2, 3]
-        assert sorter.run([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5]
-        assert sorter.run([1]) == [1]
-        assert sorter.run([]) == []
-        assert sorter.run([10, -1, 0, 7, 3]) == [-1, 0, 3, 7, 10]
+        assert sorter.run([3, 1, 2]) == [1, 2, 3], "Sort should work with random numbers"
+        assert sorter.run([5, 4, 3, 2, 1]) == [1, 2, 3, 4, 5], "Sort should work with reverse sorted nums"
+        assert sorter.run([1]) == [1], "Sort should run for single element array"
+        assert sorter.run([]) == [], "Sort should run for empty element array"
+        assert sorter.run([10, -1, 0, 7, 3]) == [-1, 0, 3, 7, 10], "Sort should run for arrays with negative elements."

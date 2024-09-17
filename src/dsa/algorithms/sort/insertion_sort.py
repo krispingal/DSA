@@ -1,6 +1,4 @@
 """Implementation of insertion sort."""
-from random import sample
-from timeit import timeit
 from src.dsa.algorithms.sort.sort_abc import Sort
 
 

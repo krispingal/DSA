@@ -19,18 +19,3 @@ class BubbleSort():
                 if A[i] > A[j]:
                     A[i], A[j] = A[j], A[i]
         return A
-
-
-if __name__ == "__main__":
-    T1 = [5, 4, 2, 3, 1]
-    T2 = [2]
-    T3 = []
-    bub = BubbleSort()
-    assert bub.run(T1) == [1, 2, 3, 4, 5]
-    assert bub.run(T2) == [2]
-    assert bub.run(T3) == []
-    SZ = 1000
-    unsorted = sample(range(-500, 500), SZ)
-    NUM_RUNS = 1000
-    timer = timeit("bub.run(unsorted)", globals=globals(), number=NUM_RUNS)
-    print(f'Bubble sort completion time for array size: {SZ} {timer/NUM_RUNS:.5f}s')
