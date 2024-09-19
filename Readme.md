@@ -29,6 +29,7 @@ to help me build a mental model on how these work under the hood.
 3. Quick sort (3 variants - Lomuto, Hoare, and Randomized)
 4. Insertion sort
 5. Heap sort
+6. Bucket sort
 
 ## Rate limit algorithms
 1. Token bucket
