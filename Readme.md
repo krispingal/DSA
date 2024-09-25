@@ -4,6 +4,18 @@ Data structures and algorithms
 This repo hosts a collection of data structures and algorithms implemented 
 to help me build a mental model on how these work under the hood.
 
+## Usage
+Clone the git package, install all the dependencies by running the below:
+```
+pip install .
+# to install test dependencies
+pip install .[test]
+# to install test dependencies in zsh run
+pip install -e '.[test]'
+```
+
+to run all the test cases run `python -m pytest`.
+
 ## Data structures
 1. Binary tree
 2. Disjoint Sets Union
