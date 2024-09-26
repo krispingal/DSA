@@ -1,5 +1,4 @@
 """"Implements prime sieves."""
-import math
 class Solution:
     def eratosthenes_sieve(self, n: int) -> list[int]:
         """" Performs Eratosthenes sieve to generate a list of prime numbers till n
@@ -10,6 +9,7 @@ class Solution:
 
         Returns
         -------
+        res - list of primes till n
 
         """
         A = [1] * (n - 1)
@@ -21,6 +21,3 @@ class Solution:
                     A[j - 2] = 0
         return res
 
-if __name__ == '__main__':
-    sol = Solution()
-    assert len(sol.eratosthenes_sieve(1000)) == 168

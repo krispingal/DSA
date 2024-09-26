@@ -1,5 +1,6 @@
 Data structures and algorithms
 ==============================
+![build passing](https://github.com/krispingal/DSA/actions/workflows/python-build.yml/badge.svg?event=push)
 
 This repo hosts a collection of data structures and algorithms implemented 
 to help me build a mental model on how these work under the hood.
