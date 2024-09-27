@@ -7,8 +7,8 @@ T = TypeVar('T')
 class ListNode(Generic[T]):
     def __init__(self, val: T, next=None, prev=None) -> None:
         self.val = val
-        self._next: ListNode | None = next
-        self._prev: ListNode | None = prev
+        self.next: ListNode | None = next
+        self.prev: ListNode | None = prev
 
 
 class DoublyLinkedList(Generic[T]):
@@ -16,63 +16,118 @@ class DoublyLinkedList(Generic[T]):
         self.head = None
         self.tail = None
 
-    def insert_beginning(self, val: T) -> None:
+    def prepend(self, val: T) -> None:
         """Inserts val to the head."""
         new_node = ListNode(val, self.head)
         if not self.head:
             self.tail = new_node
         else:
-            self.head._prev = new_node
+            self.head.prev = new_node
         self.head = new_node
 
-    def insert_end(self, val: T) -> None:
+    def append(self, val: T) -> None:
         """Inserts val to the tail."""
         new_node = ListNode(val, None, self.tail)
         if not self.tail:
             self.head = new_node
         else:
-            self.tail._next = new_node
+            self.tail.next = new_node
         self.tail = new_node
 
-    def traverse(self) -> None:
+    def insert_at_position(self, position: int, val: T) -> bool:
+        """Inserts a node at a specific position."""
+        if position < 0:
+            return False
+
+        if position == 0:
+            new_node = ListNode(val, self.head)
+            if self.head:
+                self.head.prev = new_node
+            else:
+                self.tail = new_node
+            self.head = new_node
+            return True
+
+        cur = self.head
+        while cur and position - 1 > 0:
+            cur = cur.next
+            position -= 1
+
+        if not cur: return False
+
+        if cur == self.tail:
+            new_node = ListNode(val, None, self.tail)
+            self.tail.next = new_node
+            self.tail = new_node
+            return True
+
+        temp = cur.next
+        new_node = ListNode(val, temp, cur.prev)
+        cur.next = new_node
+        if temp:
+            temp.prev = new_node
+        return True
+
+    def delete_by_value(self, key: T) -> bool:
+        """Deletes the first occurrence of the node containing data."""
+        cur = self.head
+        while cur:
+            if cur.val == key:
+                if cur == self.head:
+                    self.head = cur.next
+                    if self.head:
+                        self.head.prev = None
+                    else:
+                        self.tail = None
+                elif cur == self.tail:
+                    self.tail = cur.prev
+                    self.tail.next = None
+                else:
+                    cur.prev.next = cur.next
+                    cur.next.prev = cur.prev
+                return True
+            cur = cur.next
+        return False
+
+    def delete_at_position(self, position: int) -> bool:
+        """Deletes a node at a specific index."""
+        if position < 0 or not self.head:
+            return False
+        cur = self.head
+        while cur and position > 0:
+            cur = cur.next
+            position -= 1
+        if cur and position == 0:
+            if not cur.prev:
+                self.head = self.head.next
+            else:
+                cur.prev.next = cur.next
+            if cur.next:
+                cur.next.prev = cur.prev
+            return True
+        return False
+
+    def display(self) -> None:
         """Traverses from the start to end."""
         cur = self.head
         while cur:
-            print(cur.val)
-            cur = cur._next
+            print(cur.val, end=" ")
+            cur = cur.next
+        print()
 
-    def search(self, val: T) -> ListNode | None:
+    def search(self, key: T) -> bool:
         """Searches for key in linked list."""
         cur = self.head
-        while cur and cur.val != val:
-            cur = cur._next
-        return cur
+        while cur and cur.val != key:
+            cur = cur.next
+        return True if cur and cur.val == key else False
 
-    def delete(self, node: ListNode) -> None:
-        """Deletes a node from linked list."""
-        if node._prev:
-            node._prev._next = node._next
-        else:
-            self.head = node._next
-        if node._next:
-            node._next._prev = node._prev
-        else:
-            self.tail = node._prev
-
-
-if __name__ == '__main__':
-    dlinkList = DoublyLinkedList()
-    for i in range(0, -5, -1):
-        dlinkList.insert_beginning(i)
-    for i in range(1, 5, 1):
-        dlinkList.insert_end(i)
-    dlinkList.traverse()
-    print("Deleting -4 and 4 from linked list\n")
-
-    x = dlinkList.search(4)
-    dlinkList.delete(x)
-    x = dlinkList.search(-4)
-    dlinkList.delete(x)
-    
-    dlinkList.traverse()
-
+    def get_node_at(self, index) -> T:
+        """Returns the node at the given index."""
+        if index < 0:
+            return None
+        cur = self.head
+        while cur and index > 0:
+            index -= 1
+            cur = cur.next
+        return cur.val if cur else None

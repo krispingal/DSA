@@ -86,8 +86,13 @@ class LinkedList(Generic[T]):
 
     def get_node_at(self, index) -> T:
         """Returns the node at the given index."""
-        # TODO
-        pass
+        if index < 0:
+            return None
+        cur = self.head
+        while cur and index > 0:
+            index -= 1
+            cur = cur.next
+        return cur.val if cur else None
 
     def display(self) -> None:
         """Prints out the entire list."""
