@@ -29,7 +29,7 @@ class Trie:
             cur = cur.children[ic]
         return cur.is_end
     
-    def prefixSearch(self, prefix: str) -> bool:
+    def prefix_search(self, prefix: str) -> bool:
         cur = self.root
         for c in prefix:
             ic = self._get_char(c)
@@ -38,7 +38,7 @@ class Trie:
             cur = cur.children[ic]
         return True
 
-    def shortestRoot(self, pre: str) -> str:
+    def shortest_root(self, pre: str) -> str:
         cur = self.root
         for i in range(len(pre)):
             ic = self._get_char(pre[i])
@@ -57,8 +57,8 @@ if __name__ == '__main__':
         trie.insert(w)
     assert trie.search('Apply')
     assert not trie.search('apricot')
-    assert trie.prefixSearch('ca')
-    assert not trie.prefixSearch('ac')
-    assert trie.shortestRoot('cartographer') == 'car'
-    assert trie.shortestRoot('advent') == 'a'
+    assert trie.prefix_search('ca')
+    assert not trie.prefix_search('ac')
+    assert trie.shortest_root('cartographer') == 'car'
+    assert trie.shortest_root('advent') == 'a'
 

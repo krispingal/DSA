@@ -1,7 +1,8 @@
 """Doubly Linked list implementation."""
+
 from typing import TypeVar, Generic
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 
 class ListNode(Generic[T]):
@@ -53,7 +54,8 @@ class DoublyLinkedList(Generic[T]):
             cur = cur.next
             position -= 1
 
-        if not cur: return False
+        if not cur:
+            return False
 
         if cur == self.tail:
             new_node = ListNode(val, None, self.tail)

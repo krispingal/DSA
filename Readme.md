@@ -35,6 +35,7 @@ to run all the test cases run `python -m pytest`.
 1. Prime sieve - sieve of eratosthenes
 1. Dijkstra's algorithm - single source shortest path problem (Using priority queue)
 1. Floyd-Warshall - all pairs shortest path
+1. Pow - Fast exponentiation
 
 ### Sort
 1. Bubble sort
@@ -46,9 +47,8 @@ to run all the test cases run `python -m pytest`.
 
 ## Rate limit algorithms
 1. Token bucket
-2. Fixed window
-
-
+1. Fixed window
+1. Sliding window log
 
 ## Sort performance test results
 **Bubble sort** completion time for array size: 10_000 1.19851s
