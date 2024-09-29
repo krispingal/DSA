@@ -38,17 +38,18 @@ to run all the test cases run `python -m pytest`.
 1. Pow - Fast exponentiation
 
 ### Sort
-1. Bubble sort
-2. Merge sort
-3. Quick sort (3 variants - Lomuto, Hoare, and Randomized)
-4. Insertion sort
-5. Heap sort
-6. Bucket sort
+1. [Bubble sort](https://github.com/krispingal/DSA/blob/main/src/dsa/algorithms/sort/bubble_sort.py)
+2. [Bucket sort](https://github.com/krispingal/DSA/blob/main/src/dsa/algorithms/sort/bucket_sort.py)
+3. [Heap sort](https://github.com/krispingal/DSA/blob/main/src/dsa/algorithms/sort/heap_sort.py)
+4. [Merge sort](https://github.com/krispingal/DSA/blob/main/src/dsa/algorithms/sort/merge_sort.py)
+5. [Insertion sort](https://github.com/krispingal/DSA/blob/main/src/dsa/algorithms/sort/insertion_sort.py)
+6. [Quick sort](https://github.com/krispingal/DSA/blob/main/src/dsa/algorithms/sort/quick_sort.py) (3 variants - Lomuto, Hoare, and Randomized)
+7. [Selection sort](https://github.com/krispingal/DSA/blob/main/src/dsa/algorithms/sort/selection_sort.py)
 
-## Rate limit algorithms
-1. Token bucket
-1. Fixed window
-1. Sliding window log
+### Rate limit algorithms
+1. [Token bucket](https://github.com/krispingal/DSA/blob/main/src/dsa/algorithms/rate_limiter/token_bucket.py)
+1. [Fixed window](https://github.com/krispingal/DSA/blob/main/src/dsa/algorithms/rate_limiter/fixed_window.py)
+1. [Sliding window log](https://github.com/krispingal/DSA/blob/main/src/dsa/algorithms/rate_limiter/sliding_window_log.py)
 
 ## Sort performance test results
 **Bubble sort** completion time for array size: 10_000 1.19851s

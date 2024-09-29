@@ -2,6 +2,7 @@ import time
 import pytest
 from unittest.mock import ANY
 
+from dsa.algorithms.rate_limiter.sliding_window_counter import SlidingWindowCounter
 from dsa.algorithms.rate_limiter.sliding_window_log import SlidingWindowLog
 from src.dsa.algorithms.rate_limiter.token_bucket import TokenBucket
 from src.dsa.algorithms.rate_limiter.fixed_window import FixedWindow
@@ -106,11 +107,11 @@ class TestFixedWindow:
 
 
 class TestSlidingWindowLog:
-    def test_fixed_window(self):
+    def test_sliding_window_log(self):
         sliding_log = SlidingWindowLog(2, 2)
         assert sliding_log.allow_request(), "Should allow first request"
         time.sleep(1)
-        assert sliding_log.allow_request(), "Should allow two requests"
+        assert sliding_log.allow_request(), "Should allow second request"
         assert not sliding_log.allow_request(), "Should not allow third request"
         time.sleep(1)
         assert sliding_log.allow_request(), "Should allow request after time has passed"
@@ -146,3 +147,54 @@ class TestSlidingWindowLog:
     def test_sliding_window_log_rate_limit(self, capacity, window_size):
         sliding_log = SlidingWindowLog(capacity, window_size)
         assert sliding_log.get_rate_limit() == (capacity, window_size)
+
+
+class TestSlidingWindowCounter:
+    def test_sliding_window_counter(self):
+        sliding_counter = SlidingWindowCounter(2, 2, 2)
+        assert sliding_counter.allow_request(), "Should allow first request"
+        time.sleep(1.5)
+        assert sliding_counter.allow_request(), "Should allow second request"
+        assert not sliding_counter.allow_request(), "Should not allow third request"
+        time.sleep(1)
+        assert (
+            sliding_counter.allow_request()
+        ), "Should allow request after time has passed"
+        assert (
+            not sliding_counter.allow_request()
+        ), "Should not allow request until time has "
+
+    @pytest.mark.xfail(raises=ValueError)
+    @pytest.mark.parametrize("params", [(-2, 4, 2), (5, -2, 2), (5, 2, 3)])
+    def test_valid_params(self, params):
+        sliding_counter = SlidingWindowCounter(*params)
+
+    def test_sliding_window_counter_state(self):
+        sliding_counter = SlidingWindowCounter(4, 2, 2)
+        sliding_counter.allow_request()
+        sliding_counter.allow_request()
+        sliding_counter.allow_request()
+        sliding_counter.allow_request()
+        assert sliding_counter.get_state() == {
+            "capacity": 4,
+            "window_size": 2,
+            "bucket_size": 2,
+            "buckets": ANY,
+        }, "Sliding window accepts all requests"
+        time.sleep(2)
+        sliding_counter.allow_request()
+        assert sliding_counter.get_state() == {
+            "capacity": 4,
+            "window_size": 2,
+            "bucket_size": 2,
+            "buckets": ANY,
+        }, "Sliding window log resets after window has passed"
+
+    @pytest.mark.parametrize(
+        "capacity, window_size, bucket_size", [(2, 3, 3), (15, 2, 2)]
+    )
+    def test_sliding_window_counter_rate_limit(
+        self, capacity, window_size, bucket_size
+    ):
+        sliding_counter = SlidingWindowCounter(capacity, window_size, bucket_size)
+        assert sliding_counter.get_rate_limit() == (capacity, window_size)
