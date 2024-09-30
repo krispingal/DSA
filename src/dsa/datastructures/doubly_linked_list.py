@@ -133,3 +133,10 @@ class DoublyLinkedList(Generic[T]):
             index -= 1
             cur = cur.next
         return cur.val if cur else None
+
+    def reverse(self) -> None:
+        """Reverses the doubly linked list."""
+        cur, prev = self.head, None
+        while cur:
+            cur.next, cur.prev, cur, prev = prev, cur.next, cur.next, cur
+        self.head, self.tail = self.tail, self.head

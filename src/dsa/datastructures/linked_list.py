@@ -1,7 +1,8 @@
 """Linked list implementation."""
+
 from typing import TypeVar, Generic
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 
 class ListNode(Generic[T]):
@@ -45,7 +46,9 @@ class LinkedList(Generic[T]):
             temp = cur.next
             cur.next = ListNode(val, temp)
             return True
-        return False # Linked list cannot insert element without any preceding elements.
+        return (
+            False  # Linked list cannot insert element without any preceding elements.
+        )
 
     def delete_by_value(self, key: T) -> bool:
         """Deletes the first occurrence of the node containing data."""
@@ -55,7 +58,7 @@ class LinkedList(Generic[T]):
                 if prev:
                     prev.next = cur.next
                 else:
-                    self.head =cur.next
+                    self.head = cur.next
                 return True
             cur, prev = cur.next, cur
         return False
@@ -75,7 +78,6 @@ class LinkedList(Generic[T]):
                 prev.next = cur.next
             return True
         return False
-
 
     def search(self, key: T) -> bool:
         """Search the list for presence of key."""
@@ -102,9 +104,9 @@ class LinkedList(Generic[T]):
             cur = cur.next
         print()
 
-
-
-    def reverse(self):
+    def reverse(self) -> None:
         """Reverses the linked list."""
-        # TODO
-        pass
+        cur, prev = self.head, None
+        while cur:
+            cur.next, cur, prev = prev, cur.next, cur
+        self.head = prev
