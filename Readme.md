@@ -47,8 +47,9 @@ to run all the test cases run `python -m pytest`.
 7. [Selection sort](https://github.com/krispingal/DSA/blob/main/src/dsa/algorithms/sort/selection_sort.py)
 
 ### Rate limit algorithms
-1. [Token bucket](https://github.com/krispingal/DSA/blob/main/src/dsa/algorithms/rate_limiter/token_bucket.py)
 1. [Fixed window](https://github.com/krispingal/DSA/blob/main/src/dsa/algorithms/rate_limiter/fixed_window.py)
+1. [Token bucket](https://github.com/krispingal/DSA/blob/main/src/dsa/algorithms/rate_limiter/token_bucket.py)
+1. [Sliding window counter](https://github.com/krispingal/DSA/blob/main/src/dsa/algorithms/rate_limiter/sliding_window_counter.py)
 1. [Sliding window log](https://github.com/krispingal/DSA/blob/main/src/dsa/algorithms/rate_limiter/sliding_window_log.py)
 
 ## Sort performance test results

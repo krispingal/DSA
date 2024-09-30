@@ -9,33 +9,42 @@ from src.dsa.algorithms.rate_limiter.rate_limit_abc import RateLimiter
 
 class SlidingWindowCounter(RateLimiter):
 
-    def __init__(self, capacity: int, window_size: int, bucket_size):
-        if capacity <= 0 or window_size <= 0 or bucket_size <= 0:
+    def __init__(self, capacity: int, window_size: int, bucket_count):
+        """
+        Initialize the Sliding window counter rate limiter.
+        Args:
+            capacity:
+            window_size:
+            bucket_count:
+        """
+        if capacity <= 0 or window_size <= 0 or bucket_count <= 0:
             raise ValueError(
-                f"Capacity {capacity}, window size {window_size} and bucket size {bucket_size} must be positive integers"
+                f"Capacity {capacity}, window size {window_size} and bucket count {bucket_count} must be positive integers"
             )
-        if window_size % bucket_size != 0:
-            raise ValueError("Window size must be divisible by bucket size")
         self._capacity = capacity
         self._window_size = window_size
-        self._bucket_size = bucket_size
+        self._bucket_count = bucket_count
+        self._bucket_duration = window_size / bucket_count
         self._buckets = defaultdict(int)
         self._last_checked = time.monotonic()
 
     def _current_bucket(self) -> int:
         """Determine the current bucket based on the current time."""
-        return int(time.monotonic() // self._bucket_size)
+        t = time.monotonic()
+        return t // self._bucket_duration
 
     def _clean_old_buckets(self):
-        """Clean up buckets that are outside the sliding window."""
-        current_bucket = self._current_bucket()
-        oldest_bucket = current_bucket - (self._window_size // self._bucket_size)
-
-        buckets_to_remove = [
-            bucket for bucket in self._buckets if bucket < oldest_bucket
-        ]
-        for bucket in buckets_to_remove:
-            del self._buckets[bucket]
+        """Remove capacity of buckets that are outside the sliding window."""
+        current_time = time.monotonic()
+        current_bucket_key = self._current_bucket()
+        elapsed_buckets = (current_time - self._last_checked) // self._bucket_duration
+        if elapsed_buckets > self._bucket_count:
+            self._buckets.clear()
+        else:
+            for bucket in list(self._buckets.keys()):
+                if bucket < current_bucket_key - self._bucket_count:
+                    del self._buckets[bucket]
+            self._last_checked = current_time
 
     def allow_request(self) -> bool:
         """
@@ -58,8 +67,10 @@ class SlidingWindowCounter(RateLimiter):
         return {
             "capacity": self._capacity,
             "window_size": self._window_size,
-            "bucket_size": self._bucket_size,
+            "bucket_count": self._bucket_count,
             "buckets": dict(self._buckets),
+            "total_requests_in_buckets": sum(self._buckets.values()),
+            "last_checked": self._last_checked,
         }
 
     def get_rate_limit(self) -> tuple:
