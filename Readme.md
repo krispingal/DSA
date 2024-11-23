@@ -27,11 +27,12 @@ to run all the test cases run `python -m pytest`.
 4. Heap (Max heap)
 5. Linked list
 6. Priority Queue (Max priority queue)
-7. Queue
+7. Queue (implemented using arrays and linked list)
 8. Skip list
 9. Stack (implemented using arrays and linked list)
 10. Segment tree
-11. Trie (implemented using arrays and linked list)
+11. Tree
+12. Trie 
 
 ## Algorithms
 
@@ -51,6 +52,9 @@ to run all the test cases run `python -m pytest`.
 5. [Insertion sort](https://github.com/krispingal/DSA/blob/main/src/dsa/algorithms/sort/insertion_sort.py)
 6. [Quick sort](https://github.com/krispingal/DSA/blob/main/src/dsa/algorithms/sort/quick_sort.py) (3 variants - Lomuto, Hoare, and Randomized)
 7. [Selection sort](https://github.com/krispingal/DSA/blob/main/src/dsa/algorithms/sort/selection_sort.py)
+
+### Tree
+1. Depth First Search
 
 ## Sort performance test results
 
