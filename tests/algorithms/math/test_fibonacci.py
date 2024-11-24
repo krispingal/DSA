@@ -1,11 +1,9 @@
 import pytest
 
-from src.dsa.algorithms.math.fibonacci import Fibonacci
-
-
-@pytest.fixture
-def testcase():
-    return []
+from src.dsa.algorithms.math.fibonacci import (
+    nth_fibonacci_recursive,
+    nth_fibonacci_iterative,
+)
 
 
 class TestFibonacci:
@@ -19,8 +17,7 @@ class TestFibonacci:
         ],
     )
     def test_fibonacci_recursive(self, actual, expected, msg):
-        fib = Fibonacci()
-        assert fib.nth_fibonacci_recursive(actual) == expected, msg
+        assert nth_fibonacci_recursive(actual) == expected, msg
 
     @pytest.mark.parametrize(
         "actual, expected, msg",
@@ -32,5 +29,4 @@ class TestFibonacci:
         ],
     )
     def test_fibonacci_iterative(self, actual, expected, msg):
-        fib = Fibonacci()
-        assert fib.nth_fibonacci_iterative(actual) == expected, msg
+        assert nth_fibonacci_iterative(actual) == expected, msg

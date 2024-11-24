@@ -11,17 +11,15 @@ T = TypeVar('T')
 
 
 class Solution(Generic[T]):
-    def dijkstra(self, edge_list: list[tuple[T, T, int]], s: T):
-        """ Performs Dijkstra's algorithm to find shortest path from source.
+    def dijkstra(self, edge_list: list[tuple[T, T, int]], s: T) -> int:
+        """Performs Dijkstra's algorithm to find shortest path from source.
 
-            Parameters
-            ----------
-            edge_list: Edge list in the form [(A, B, 1), (A, C, 3)] => Node 1 has edges to node 2 and node 3 with cost
-            s: Source node
+            Args:
+                edge_list (list[tuple[T, T, int]]: Edge list in the form [(A, B, 1), (A, C, 3)] => Node 1 has edges to node 2 and node 3 with cost
+                s (T): Source node
 
-            Returns
-            -------
-            dist: An array of size n, containing the shortest distance from source node.
+            Returns:
+                dist (int): An array of size n, containing the shortest distance from source node.
         """
         seen = set()
         dist = defaultdict(lambda: math.inf)

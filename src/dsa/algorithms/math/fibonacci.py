@@ -1,39 +1,46 @@
-"""Implements various methods to find fibonacci numbers."""
+"""Implements various methods to find fibonacci numbers.
+
+If we denote F(n) as the nth fibonacci number, then
+F(n) = F(n-1) + F(n-2)
+and so on until F(1) = 1 and F(0) = 0
+"""
 
 from functools import cache
 
 
-class Fibonacci:
-    @cache
-    def nth_fibonacci_recursive(self, n: int) -> int:
-        """ " Finds the nth fibonacci number using
-            top-down(memoization) dynamic programming approach.
+@cache
+def nth_fibonacci_recursive(n: int) -> int:
+    """Computes nth fibonacci number recursively.
 
-        Args:
-            n: The number
+    Finds the nth fibonacci number using top-down(memoization) dynamic programming approach.
 
-        Returns:
-            nth fibonacci number
+    Args:
+        n (int): The number >= 0
 
-        """
-        if n <= 1:
-            return n
-        return self.nth_fibonacci_recursive(n - 1) + self.nth_fibonacci_recursive(n - 2)
+    Returns:
+        nth fibonacci number
 
-    def nth_fibonacci_iterative(self, n: int) -> int:
-        """Finds the nth fibonacci number using
-            bottom up dynamic programming approach.
+    """
+    if n <= 1:
+        return n
+    return nth_fibonacci_recursive(n - 1) + nth_fibonacci_recursive(n - 2)
 
-        Args:
-            n: The number
 
-        Returns:
-            nth fibonacci number
+def nth_fibonacci_iterative(n: int) -> int:
+    """Computes nth fibonacci number iteratively.
 
-        """
-        if n <= 1:
-            return n
-        prev, pprev = 0, 1
-        for _ in range(n):
-            prev, pprev = prev + pprev, prev
-        return prev
+    Finds the nth fibonacci number using bottom up dynamic programming approach.
+
+    Args:
+        n (int): The number >= 0
+
+    Returns:
+        nth fibonacci number
+
+    """
+    if n <= 1:
+        return n
+    prev, pprev = 0, 1
+    for _ in range(n):
+        prev, pprev = prev + pprev, prev
+    return prev
