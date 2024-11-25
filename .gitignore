@@ -4,3 +4,5 @@ dist
 lib
 __pycache__/
 TODO.md
+docs/_build/
+docs/*.pyc
