@@ -336,10 +336,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dsa.algorithms.math.prime_sieve.Solution"><code class="docutils literal notranslate"><span class="pre">Solution</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dsa.algorithms.math.prime_sieve.Solution.eratosthenes_sieve"><code class="docutils literal notranslate"><span class="pre">Solution.eratosthenes_sieve()</span></code></a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dsa.algorithms.math.prime_sieve.eratosthenes_sieve"><code class="docutils literal notranslate"><span class="pre">eratosthenes_sieve()</span></code></a></li>
 </ul>
             </nav>
         </div>
@@ -353,42 +350,67 @@
                   
   <section id="module-dsa.algorithms.math.prime_sieve">
 <span id="dsa-algorithms-math-prime-sieve"></span><h1>dsa.algorithms.math.prime_sieve<a class="headerlink" href="#module-dsa.algorithms.math.prime_sieve" title="Link to this heading">#</a></h1>
-<p>“Implements prime sieves.</p>
-<p class="rubric">Classes</p>
+<p>Implements prime sieves.</p>
+<p class="rubric">Functions</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#dsa.algorithms.math.prime_sieve.Solution" title="dsa.algorithms.math.prime_sieve.Solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Solution</span></code></a>()</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dsa.algorithms.math.prime_sieve.eratosthenes_sieve" title="dsa.algorithms.math.prime_sieve.eratosthenes_sieve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eratosthenes_sieve</span></code></a>(n)</p></td>
+<td><p>Implements the Sieve of Eratosthenes algorithm to compute all prime numbers up to a given limit.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<dl class="py class">
-<dt class="sig sig-object py" id="dsa.algorithms.math.prime_sieve.Solution">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dsa.algorithms.math.prime_sieve.</span></span><span class="sig-name descname"><span class="pre">Solution</span></span><a class="headerlink" href="#dsa.algorithms.math.prime_sieve.Solution" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="dsa.algorithms.math.prime_sieve.Solution.eratosthenes_sieve">
-<span class="sig-name descname"><span class="pre">eratosthenes_sieve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsa.algorithms.math.prime_sieve.Solution.eratosthenes_sieve" title="Link to this definition">#</a></dt>
-<dd><p>“ Performs Eratosthenes sieve to generate a list of prime numbers till n</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="dsa.algorithms.math.prime_sieve.eratosthenes_sieve">
+<span class="sig-prename descclassname"><span class="pre">dsa.algorithms.math.prime_sieve.</span></span><span class="sig-name descname"><span class="pre">eratosthenes_sieve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsa.algorithms.math.prime_sieve.eratosthenes_sieve" title="Link to this definition">#</a></dt>
+<dd><p>Implements the Sieve of Eratosthenes algorithm to compute all prime numbers up to a given limit.</p>
+<p>This function efficiently generates a list of prime numbers by marking the multiples
+of each prime number starting from 2. It is a classic algorithm used in number theory.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</span></p>
 </dd>
 <dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>n</strong> (<em>int</em>)</p>
+<dd class="field-even"><p><strong>n</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The upper inclusive limit up to which primes are calculated. Must be a positive integer greater than 1.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>list[int]</em> – A list of all prime numbers from 2 to <cite>n</cite>.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If <cite>n</cite> is less than 2, as the sieve cannot compute primes below this limit.</p>
 </dd>
 </dl>
-<section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">#</a></h2>
-<p>n: Inclusive limit till the sieve is computed against</p>
-</section>
-<section id="returns">
-<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading">#</a></h2>
-<p>res - list of primes till n</p>
-</section>
-</dd></dl>
-
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">primes</span> <span class="o">=</span> <span class="n">sieve_of_eratosthenes</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">primes</span><span class="p">)</span>
+<span class="go">[2, 3, 5, 7]</span>
+</pre></div>
+</div>
+<p class="rubric">References</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Sieve of Eratosthenes on Wikipedia</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=klcIklsWzrY">Sieve of Eratosthenes on YouTube - Khan Academy</a></p></li>
+</ul>
+<div class="admonition-notes admonition">
+<p class="admonition-title">Notes</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Performance</strong>:</dt><dd><ul>
+<li><p>Time Complexity: O(n log log n), where <cite>n</cite> is the upper limit.</p></li>
+<li><p>Space Complexity: O(n), for storing the sieve array.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>This implementation uses a 0-based index internally for the sieve array.</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p>For very large values of <cite>n</cite>, the memory usage can be significant due to the array size.</p></li>
+</ul>
+</div>
 </dd></dl>
 
 </section>
@@ -439,10 +461,7 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dsa.algorithms.math.prime_sieve.Solution"><code class="docutils literal notranslate"><span class="pre">Solution</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dsa.algorithms.math.prime_sieve.Solution.eratosthenes_sieve"><code class="docutils literal notranslate"><span class="pre">Solution.eratosthenes_sieve()</span></code></a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dsa.algorithms.math.prime_sieve.eratosthenes_sieve"><code class="docutils literal notranslate"><span class="pre">eratosthenes_sieve()</span></code></a></li>
 </ul>
   </nav></div>
 

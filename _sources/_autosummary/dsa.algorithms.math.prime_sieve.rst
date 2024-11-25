@@ -4,9 +4,9 @@ dsa.algorithms.math.prime\_sieve
 .. automodule:: dsa.algorithms.math.prime_sieve
 
    
-   .. rubric:: Classes
+   .. rubric:: Functions
 
    .. autosummary::
    
-      Solution
+      eratosthenes_sieve
    

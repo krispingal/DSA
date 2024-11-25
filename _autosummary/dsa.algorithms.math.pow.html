@@ -336,10 +336,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dsa.algorithms.math.pow.Pow"><code class="docutils literal notranslate"><span class="pre">Pow</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dsa.algorithms.math.pow.Pow.fast_exponentiation"><code class="docutils literal notranslate"><span class="pre">Pow.fast_exponentiation()</span></code></a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dsa.algorithms.math.pow.fast_exponentiation"><code class="docutils literal notranslate"><span class="pre">fast_exponentiation()</span></code></a></li>
 </ul>
             </nav>
         </div>
@@ -353,35 +350,72 @@
                   
   <section id="module-dsa.algorithms.math.pow">
 <span id="dsa-algorithms-math-pow"></span><h1>dsa.algorithms.math.pow<a class="headerlink" href="#module-dsa.algorithms.math.pow" title="Link to this heading">#</a></h1>
-<p class="rubric">Classes</p>
+<p>Implements pow function.</p>
+<p class="rubric">Functions</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#dsa.algorithms.math.pow.Pow" title="dsa.algorithms.math.pow.Pow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pow</span></code></a>()</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dsa.algorithms.math.pow.fast_exponentiation" title="dsa.algorithms.math.pow.fast_exponentiation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fast_exponentiation</span></code></a>(base, exp)</p></td>
+<td><p>Computes the result of raising a base to a power (exponent) using an efficient iterative method.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<dl class="py class">
-<dt class="sig sig-object py" id="dsa.algorithms.math.pow.Pow">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dsa.algorithms.math.pow.</span></span><span class="sig-name descname"><span class="pre">Pow</span></span><a class="headerlink" href="#dsa.algorithms.math.pow.Pow" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="dsa.algorithms.math.pow.Pow.fast_exponentiation">
-<span class="sig-name descname"><span class="pre">fast_exponentiation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsa.algorithms.math.pow.Pow.fast_exponentiation" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
+<dl class="py function">
+<dt class="sig sig-object py" id="dsa.algorithms.math.pow.fast_exponentiation">
+<span class="sig-prename descclassname"><span class="pre">dsa.algorithms.math.pow.</span></span><span class="sig-name descname"><span class="pre">fast_exponentiation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsa.algorithms.math.pow.fast_exponentiation" title="Link to this definition">#</a></dt>
+<dd><p>Computes the result of raising a base to a power (exponent) using an efficient iterative method.</p>
+<p>This function handles positive, negative, and zero exponents efficiently using the fast
+exponentiation (exponentiation by squaring) technique.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span></p>
 </dd>
 <dt class="field-even">Parameters<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>base</strong> (<em>float</em>)</p></li>
-<li><p><strong>exp</strong> (<em>int</em>)</p></li>
+<li><p><strong>base</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – The base number to be raised to the power.</p></li>
+<li><p><strong>exp</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The exponent to which the base is raised. Can be positive, negative, or zero.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>float</em> – The result of <cite>base</cite> raised to the power <cite>exp</cite>.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If <cite>base</cite> is 0 and <cite>exp</cite> is negative, as the result would be undefined.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">fast_exponentiation</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="go">1024.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">fast_exponentiation</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="go">0.125</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">fast_exponentiation</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="go">1.0</span>
+</pre></div>
+</div>
+<div class="admonition-notes admonition">
+<p class="admonition-title">Notes</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Performance</strong>:</dt><dd><ul>
+<li><p>Time Complexity: O(log n), where <cite>n</cite> is the absolute value of the exponent.</p></li>
+<li><p>Space Complexity: O(1).</p></li>
 </ul>
 </dd>
 </dl>
-</dd></dl>
-
+</li>
+<li><p>Handles both positive and negative exponents, including <cite>0</cite> as the exponent.</p></li>
+<li><p>For <cite>base=0</cite> and <cite>exp=0</cite>, the return value is defined as <cite>1.0</cite> (consistent with Python’s <cite>math.pow</cite> behavior).</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p>Avoid using <cite>base=0</cite> with a negative exponent, as it raises a <cite>ValueError</cite>.</p></li>
+</ul>
+</div>
 </dd></dl>
 
 </section>
@@ -432,10 +466,7 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dsa.algorithms.math.pow.Pow"><code class="docutils literal notranslate"><span class="pre">Pow</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dsa.algorithms.math.pow.Pow.fast_exponentiation"><code class="docutils literal notranslate"><span class="pre">Pow.fast_exponentiation()</span></code></a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dsa.algorithms.math.pow.fast_exponentiation"><code class="docutils literal notranslate"><span class="pre">fast_exponentiation()</span></code></a></li>
 </ul>
   </nav></div>
 
