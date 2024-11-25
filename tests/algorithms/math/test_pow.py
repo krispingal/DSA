@@ -1,7 +1,7 @@
 import cmath
 import pytest
 
-from src.dsa.algorithms.math.pow import Pow
+from src.dsa.algorithms.math.pow import fast_exponentiation
 
 
 class TestPow:
@@ -13,6 +13,7 @@ class TestPow:
             (2.0, -2, 0.2500, "Exponentiation works negative numbers"),
             (2.1, 10, 1667.9880978201006, "Exponentiation works large numbers"),
             (2.1, 221, 1.6235442735369674e71, "Exponentiation works large numbers"),
+            (2.0, 0, 1.0, "Exponentiation with zero returns 1.0"),
             (
                 2.1,
                 -213,
@@ -22,6 +23,9 @@ class TestPow:
         ],
     )
     def test_pow(self, base, exponent, expected, msg):
-        pow = Pow()
-        actual = pow.fast_exponentiation(base, exponent)
+        actual = fast_exponentiation(base, exponent)
         assert cmath.isclose(actual, expected, rel_tol=0.02), msg
+
+    @pytest.mark.xfail(raises=ValueError, strict=True)
+    def test_pow_invalid_value(self):
+        fast_exponentiation(0.0, -1)
