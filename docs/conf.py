@@ -34,8 +34,8 @@ autodoc_default_options = {
 
 
 autosummary_generate = True
-# autodoc_typehints = "description"
-# autodoc_member_order = "bysource"
+autodoc_typehints = "description"
+autodoc_member_order = "bysource"
 
 autodoc_typehints = "description"
 

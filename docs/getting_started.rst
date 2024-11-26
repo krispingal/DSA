@@ -13,7 +13,8 @@ and learning.
 
 Installation
 ------------
-Clone the git package, install all the dependencies by running the below:
+Clone the git package, install all the dependencies by running the below, preferrably within 
+a virtual environment like `venv <https://docs.python.org/3/library/venv.html>`_.
 
 .. code-block:: bash
 
