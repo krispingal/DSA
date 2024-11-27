@@ -12,7 +12,7 @@ Getting Started
 If you're new to this library, start with the **Getting Started** guide to learn how to set up and run the project.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Quick Start:
 
    getting_started
