@@ -1,3 +1,4 @@
+===============
 Getting Started
 ===============
 
@@ -7,12 +8,13 @@ This guide explains how to set up and use the `dsa` library.
    :local:
 
 Overview
---------
+========
 dsa is a Python library for data structures and algorithms, designed for easy reference
 and learning.
 
 Installation
-------------
+============
+
 Clone the git package, install all the dependencies by running the below, preferrably within 
 a virtual environment like `venv <https://docs.python.org/3/library/venv.html>`_.
 

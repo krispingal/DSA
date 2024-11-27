@@ -1,3 +1,4 @@
+"""Trie data structure implementation"""
 class TrieNode:
     def __init__(self):
         self.children: list[TrieNode] = [None] * 26

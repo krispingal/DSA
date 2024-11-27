@@ -1,4 +1,4 @@
-""""Implements a generalized tree"""
+"""Implements a generalized tree"""
 
 
 class TreeNode:

@@ -1,4 +1,4 @@
-""""Abstract class for max priority queue."""
+"""Abstract class for max priority queue."""
 from abc import ABC, abstractmethod
 from typing import TypeVar, Generic
 
