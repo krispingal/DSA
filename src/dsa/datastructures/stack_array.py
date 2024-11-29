@@ -1,8 +1,10 @@
 """Stack implemented using Arrays/lists"""
+
 from dataclasses import dataclass, field
 from typing import TypeVar, Generic
-from stack_abc import Stack as StackABC
-T = TypeVar('T')
+from src.dsa.datastructures.stack_abc import Stack as StackABC
+
+T = TypeVar("T")
 
 
 @dataclass
@@ -13,7 +15,8 @@ class Stack(StackABC, Generic[T]):
         self.items.append(item)
 
     def pop(self) -> T:
-        if self.is_empty(): raise IndexError
+        if self.is_empty():
+            raise IndexError
         return self.items.pop()
 
     def is_empty(self) -> bool:
@@ -22,7 +25,8 @@ class Stack(StackABC, Generic[T]):
     def peek(self) -> T:
         return self.items[-1]
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     stack = Stack()
     lis = "All that glitters is not gold".split(" ")[::-1]
     for a in lis:

@@ -1,9 +1,10 @@
 """Stack implementation using linked list."""
+
 from typing import TypeVar, Generic
-from src.dsa.datastructures.linked_list import Node
+from src.dsa.datastructures.linked_list import ListNode
 from src.dsa.datastructures.stack_abc import Stack as StackABC
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 
 class Stack(StackABC, Generic[T]):
@@ -11,11 +12,12 @@ class Stack(StackABC, Generic[T]):
         self.head = None
 
     def push(self, val: T) -> None:
-        new_node = Node(val, self.head)
+        new_node = ListNode(val, self.head)
         self.head = new_node
 
     def pop(self) -> T:
-        if self.is_empty(): raise IndexError
+        if self.is_empty():
+            raise IndexError
         pop_val = self.head.val
         self.head = self.head.next
         return pop_val
@@ -24,11 +26,12 @@ class Stack(StackABC, Generic[T]):
         return not self.head
 
     def peek(self) -> T:
-        if not self.head: return
+        if not self.head:
+            return
         return self.head.val
 
-   
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     stack = Stack()
     lis = "All that glitters is not gold".split(" ")[::-1]
     for a in lis:

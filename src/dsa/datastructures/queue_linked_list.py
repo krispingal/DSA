@@ -1,10 +1,11 @@
 """Queue implemented using linked list."""
+
 from typing import TypeVar, Generic
-from src.dsa.datastructures.linked_list import Node
+from src.dsa.datastructures.linked_list import ListNode
 from src.dsa.datastructures.queue_abc import QueueABC
 
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 
 class Queue(QueueABC, Generic[T]):
@@ -13,7 +14,7 @@ class Queue(QueueABC, Generic[T]):
         self.tail = None
 
     def enqueue(self, val: T) -> None:
-        nnode = Node(val)
+        nnode = ListNode(val)
         if not self.tail:
             self.head = self.tail = nnode
         else:
@@ -21,7 +22,8 @@ class Queue(QueueABC, Generic[T]):
             self.tail = nnode
 
     def dequeue(self) -> T:
-        if self.is_empty(): raise IndexError
+        if self.is_empty():
+            raise IndexError
         val, self.head = self.head.val, self.head.next
         return val
 
@@ -29,11 +31,12 @@ class Queue(QueueABC, Generic[T]):
         return not self.head
 
     def peek(self) -> T:
-        if self.is_empty(): raise IndexError
+        if self.is_empty():
+            raise IndexError
         return self.head.val
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     q = Queue()
     lis = "All that glitters is not gold".split(" ")
     for a in lis:

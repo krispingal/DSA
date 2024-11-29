@@ -2,7 +2,7 @@
 
 from typing import Callable, Any
 
-from ...datastructures.tree_protocol import TreeProtocol
+from dsa.datastructures.tree_protocol import TreeProtocol
 
 
 def dfs(tree: TreeProtocol, node: Any, visit: Callable[[Any], None]) -> None:

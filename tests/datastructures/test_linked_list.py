@@ -204,15 +204,15 @@ class TestLinkedList:
     @pytest.mark.parametrize(
         "elements, key, expected, msg",
         [
-            ([], 1, False, "Should be able to search in a list with only 1 element"),
-            ([1], 1, True, "Should be able to search in a list with only 1 element"),
+            ([], 1, -1, "Should be able to search in a list with only 1 element"),
+            ([1], 1, 0, "Should be able to search in a list with only 1 element"),
             (
                 [1, 2, 3],
                 3,
-                True,
+                2,
                 "Should be able to search in a list with multiple elements",
             ),
-            ([1, 2, 3], 0, False, "Should fail if element is not present in LL"),
+            ([1, 2, 3], 0, -1, "Should fail if element is not present in LL"),
         ],
     )
     def test_search(self, elements, key, expected, msg):
@@ -225,6 +225,19 @@ class TestLinkedList:
         "elements, index, expected, msg",
         [
             ([], 1, None, "Should not be able to access elements from empty LL"),
+            ([1, 2, 3], -1, None, "Should fail if index is < 0 LL"),
+            ([1, 2, 3], 3, None, "Should fail if index does not exist in LL"),
+        ],
+    )
+    def test_get_node_at_none(self, elements, index, expected, msg):
+        linked_list = LinkedList()
+        for e in elements:
+            linked_list.append(e)
+        assert linked_list.get_node_at(index) == expected, msg
+
+    @pytest.mark.parametrize(
+        "elements, index, expected, msg",
+        [
             ([1], 0, 1, "Should be able to access in a list with only 1 element"),
             (
                 [1, 2, 3],
@@ -232,29 +245,27 @@ class TestLinkedList:
                 3,
                 "Should be able to search in a list with multiple elements",
             ),
-            ([1, 2, 3], -1, None, "Should fail if index is < 0 LL"),
-            ([1, 2, 3], 3, None, "Should fail if index does not exist in LL"),
         ],
     )
-    def test_get_node_at(self, elements, index, expected, msg):
+    def test_get_node_at_val(self, elements, index, expected, msg):
         linked_list = LinkedList()
         for e in elements:
             linked_list.append(e)
-        assert linked_list.get_node_at(index) == expected, msg
+        assert linked_list.get_node_at(index).val == expected, msg
 
     @pytest.mark.parametrize(
         "elements, expected, msg",
         [
-            ([], "\n", "Display should work when LL is empty"),
-            (["A"], "A \n", "Display should work with single element"),
-            ([1, 2, 3], "1 2 3 \n", "Display should work with multiple elements"),
+            ([], "\n", "str should work when LL is empty"),
+            (["A"], "A\n", "Display should work with single element"),
+            ([1, 2, 3], "1 -> 2 -> 3\n", "Display should work with multiple elements"),
         ],
     )
     def test_display(self, capfd, elements, expected, msg):
         linked_list = LinkedList()
         for e in elements:
             linked_list.append(e)
-        linked_list.display()
+        print(linked_list)
         out, err = capfd.readouterr()
         assert out == expected, msg
 
@@ -275,6 +286,7 @@ class TestLinkedList:
         for e in elements:
             linked_list.append(e)
         linked_list.reverse()
+        print(linked_list)
         cur = linked_list.head
         for expected_value in expected:
             assert cur.val == expected_value, msg

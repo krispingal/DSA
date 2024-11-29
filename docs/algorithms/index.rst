@@ -15,6 +15,7 @@ Similarly, in software engineering, simply implementing an algorithm might not a
 Why Learn Algorithms?
 =====================
 Understanding algorithms equips us to:
+
 - Analyze problems more effectively.
 - Choose or design the most suitable solutions.
 - Optimize for performance, efficiency, or other constraints.
