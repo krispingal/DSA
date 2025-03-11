@@ -24,6 +24,7 @@ extensions = [
     "sphinx_autodoc_typehints",
     "sphinx.ext.napoleon",
     "sphinx.ext.mathjax",
+    "sphinx.ext.viewcode",
 ]
 
 autodoc_default_options = {

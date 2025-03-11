@@ -97,6 +97,8 @@ this document.
     * ``search``: Find the index of the first occurrence of a value (:math:`O(n)`).
     * ``get_node_at``: Retrieve the node at a specific index (:math:`O(n)`).
 
+You can find the entire API for linked lists in the :class:`API reference section <dsa.datastructures.linked_list.LinkedList>`.
+
 Implementation Details
 ======================
 
@@ -229,7 +231,7 @@ This class manages the linked list and provides methods for manipulating it.
 
 ----------
 
-2. Key Methods
+Key Methods
 ----------------
 Here’s an overview of the most important methods, organized by functionality:
 

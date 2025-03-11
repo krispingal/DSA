@@ -1,7 +1,7 @@
 import cmath
 import pytest
 
-from src.dsa.algorithms.math.pow import fast_exponentiation
+from src.dsa.algorithms.mathematic.pow import fast_exponentiation
 
 
 class TestPow:

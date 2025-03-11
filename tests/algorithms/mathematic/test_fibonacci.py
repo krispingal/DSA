@@ -1,6 +1,6 @@
 import pytest
 
-from src.dsa.algorithms.math.fibonacci import (
+from src.dsa.algorithms.mathematic.fibonacci import (
     nth_fibonacci_recursive,
     nth_fibonacci_iterative,
 )

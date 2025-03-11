@@ -1,12 +1,17 @@
 """Doubly Linked list implementation."""
 
-from typing import TypeVar, Generic
+from typing import TypeVar, Generic, Optional
 
 T = TypeVar("T")
 
 
 class ListNode(Generic[T]):
-    def __init__(self, val: T, next=None, prev=None) -> None:
+    def __init__(
+        self,
+        val: T,
+        next: Optional["ListNode[T]"] = None,
+        prev: Optional["ListNode[T]"] = None,
+    ) -> None:
         self.val = val
         self.next: ListNode | None = next
         self.prev: ListNode | None = prev
@@ -14,8 +19,9 @@ class ListNode(Generic[T]):
 
 class DoublyLinkedList(Generic[T]):
     def __init__(self) -> None:
-        self.head = None
-        self.tail = None
+        self.head: Optional["ListNode[T]"] = None
+        self.tail: Optional["ListNode[T]"] = None
+        self.size: int = 0
 
     def prepend(self, val: T) -> None:
         """Inserts val to the head."""
@@ -25,6 +31,7 @@ class DoublyLinkedList(Generic[T]):
         else:
             self.head.prev = new_node
         self.head = new_node
+        self.size += 1
 
     def append(self, val: T) -> None:
         """Inserts val to the tail."""
@@ -34,6 +41,7 @@ class DoublyLinkedList(Generic[T]):
         else:
             self.tail.next = new_node
         self.tail = new_node
+        self.size += 1
 
     def insert_at_position(self, position: int, val: T) -> bool:
         """Inserts a node at a specific position."""
@@ -47,6 +55,7 @@ class DoublyLinkedList(Generic[T]):
             else:
                 self.tail = new_node
             self.head = new_node
+            self.size += 1
             return True
 
         cur = self.head
@@ -61,6 +70,7 @@ class DoublyLinkedList(Generic[T]):
             new_node = ListNode(val, None, self.tail)
             self.tail.next = new_node
             self.tail = new_node
+            self.size += 1
             return True
 
         temp = cur.next
@@ -68,7 +78,18 @@ class DoublyLinkedList(Generic[T]):
         cur.next = new_node
         if temp:
             temp.prev = new_node
+        self.size += 1
         return True
+
+    def delete(self, node: ListNode):
+        if node.prev:
+            node.prev.next = node.next
+        if node.next:
+            node.next.prev = node.prev
+        if node == self.head:
+            self.head = node.next
+        if node == self.tail:
+            self.tail = node.prev
 
     def delete_by_value(self, key: T) -> bool:
         """Deletes the first occurrence of the node containing data."""
@@ -87,6 +108,7 @@ class DoublyLinkedList(Generic[T]):
                 else:
                     cur.prev.next = cur.next
                     cur.next.prev = cur.prev
+                self.size -= 1
                 return True
             cur = cur.next
         return False
@@ -106,6 +128,7 @@ class DoublyLinkedList(Generic[T]):
                 cur.prev.next = cur.next
             if cur.next:
                 cur.next.prev = cur.prev
+            self.size -= 1
             return True
         return False
 
@@ -140,3 +163,13 @@ class DoublyLinkedList(Generic[T]):
         while cur:
             cur.next, cur.prev, cur, prev = prev, cur.next, cur.next, cur
         self.head, self.tail = self.tail, self.head
+
+    def __len__(self) -> int:
+        """Return the size of the list."""
+        return self.size
+
+    def __iter__(self):
+        cur = self.head
+        while cur:
+            yield cur
+            cur = cur.next

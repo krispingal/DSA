@@ -1,6 +1,6 @@
 import pytest
 
-from src.dsa.algorithms.math.prime_sieve import eratosthenes_sieve
+from src.dsa.algorithms.mathematic.prime_sieve import eratosthenes_sieve
 
 
 class TestPrimeSieve:
